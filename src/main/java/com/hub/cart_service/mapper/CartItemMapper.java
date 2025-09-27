@@ -11,7 +11,6 @@ public class CartItemMapper {
                 .builder()
                 .userId(cartItem.getUserId())
                 .courseId(cartItem.getCourseId())
-                .quantity(cartItem.getQuantity())
                 .build();
     }
 }

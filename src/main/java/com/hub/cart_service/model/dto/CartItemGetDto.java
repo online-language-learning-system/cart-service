@@ -5,7 +5,6 @@ import lombok.Builder;
 @Builder
 public record CartItemGetDto(
         String userId,
-        Long courseId,
-        Integer quantity
+        Long courseId
 ) {
 }

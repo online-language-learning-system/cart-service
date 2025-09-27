@@ -8,8 +8,8 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 public class CartItemId {
-    private String customerId;
-    private Long productId;
+    private String userId;
+    private Long courseId;
 }
 
 /*

@@ -1,10 +1,7 @@
 package com.hub.cart_service.model;
 
 import com.hub.common_library.model.AbstractAuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +17,11 @@ import lombok.Setter;
 public class CartItem extends AbstractAuditEntity {
 
     @Id
+    @Column(name = "user_id")
     private String userId;
 
     @Id
+    @Column(name = "course_id")
     private Long courseId;
 
-    private int quantity;
 }

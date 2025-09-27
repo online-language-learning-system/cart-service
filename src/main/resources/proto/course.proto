@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_package = "com.hub.cart_service.grpc";
+option java_multiple_files = true;
+
+// Service (interface/stub Java cho server và client) - provides info course
+service CourseService {
+  rpc GetCourseDetails (CourseListRequest) returns (CourseListResponse);
+}
+
+// Message = respective class/struct Java
+message CourseListRequest {
+  repeated int64 courseId = 1;
+}
+
+message CourseDetail {
+  int64 courseId = 1;
+  string courseName = 2;
+  string instructor = 3;
+  float price = 4;
+  string imageUrl = 5;
+}
+
+message CourseListResponse {
+  repeated CourseDetail courses = 1;
+}
+
+// 1. Proto file => generate stub code for server and client in respective programming languages
+// 2. Compile proto
+// 3. Implement gRPC server and client
+
