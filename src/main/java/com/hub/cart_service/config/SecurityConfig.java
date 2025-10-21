@@ -26,7 +26,8 @@ public class SecurityConfig {
         return httpSecurity
             .authorizeHttpRequests(
                 author ->
-                        author.anyRequest().authenticated()
+                        author.requestMatchers("/swagger-ui", "/swagger-ui/**","/v3/api-docs/**").permitAll()
+                                .anyRequest().authenticated()
             ).oauth2ResourceServer(
                     oauth2 ->
                             oauth2.jwt(Customizer.withDefaults())

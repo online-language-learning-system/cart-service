@@ -8,6 +8,7 @@ import com.hub.cart_service.model.dto.CourseDetailRestDto;
 import com.hub.cart_service.service.CartItemService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class CartItemController {
 
     @DeleteMapping("/storefront/cart/{courseId}")
     public ResponseEntity<Void> removeItemFromCart(@PathVariable(value = "courseId") Long courseId) {
-        cartItemService.removeCourseFromCart(courseId);
+        cartItemService.removeCourseFromCart(courseId, null);
         return ResponseEntity.noContent().build();
     }
 }

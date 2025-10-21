@@ -56,8 +56,12 @@ public class CartItemService {
 
 
     @Transactional
-    public void removeCourseFromCart(Long courseId) {
-        String currentUserId = SecurityContextHolder.getContext().getAuthentication().getName();
+    public void removeCourseFromCart(Long courseId, String currentUserId) {
+
+        if (currentUserId == null) {
+            currentUserId = SecurityContextHolder.getContext().getAuthentication().getName();
+        }
+
         CartItem cartItem = cartItemRepository.findByUserIdAndCourseId(currentUserId, courseId)
                 .orElseThrow(() -> new NotFoundException(Constants.ErrorCode.COURSE_NOT_FOUND_IN_CART, courseId));
 
@@ -76,7 +80,6 @@ public class CartItemService {
 
     private CartItem performAddCartItem(CartItemPostDto cartItemPostDto, String currentUserId) {
         try {
-
             Optional<CartItem> existingCartItem =
                     cartItemRepository.findByUserIdAndCourseId(currentUserId, cartItemPostDto.courseId());
 
